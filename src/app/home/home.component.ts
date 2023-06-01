@@ -9,7 +9,7 @@ import { MeteoService } from './meteo.service';
 })
 export class HomeComponent implements OnInit {
 
-
+  //passo i dati dal service a questo component
   constructor(private metSev: MeteoService) { }
 
   ngOnInit(): void {

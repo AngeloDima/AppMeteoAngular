@@ -15,11 +15,14 @@ export class MeteoService {
     this.url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}`;
   }
 
+
+  //prendo i dati dalla API e le mappo con le PIPE
   getMeteo() {
     return this.http.get(this.url).pipe(
       map((response: any) => {
         const meteoInfo: MetAttuale = new MetAttuale(this.city);
 
+        //riassegno un nuovo nome per comodità  (il primo è il nome:   la seconda è il dato grezzo)
         meteoInfo.tempoInfo = {
           id: response.weather[0].id,
           cielo: response.weather[0].main,
