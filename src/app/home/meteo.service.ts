@@ -20,25 +20,25 @@ export class MeteoService {
       map((response: any) => {
         const meteoInfo: MetAttuale = new MetAttuale(this.city);
 
-        meteoInfo.tempoInfo = [{
+        meteoInfo.tempoInfo = {
           id: response.weather[0].id,
           cielo: response.weather[0].main,
           descrizione: response.weather[0].description,
           icon: response.weather[0].icon
-        }];
+        };
 
-        meteoInfo.principale = [{
+        meteoInfo.principale = {
           temperatura: response.main.temp,
           tempMax: response.main.temp_max,
           tempMin: response.main.temp_min,
           umidita: response.main.humidity
-        }];
+        };
 
-        meteoInfo.vento = [{
+        meteoInfo.vento = {
           velocitaVento: response.wind.speed
-        }];
+        };
 
-        return [meteoInfo];
+        return meteoInfo;
       })
     );
   }
