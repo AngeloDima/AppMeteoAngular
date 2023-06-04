@@ -1,1 +1,5 @@
-<p>previsioni works!</p>
+<h1>Previsioni meteo per {{ nomeCitta }}</h1>
+
+<h2>Temperatura attuale: {{ meteoPrev?.priPrev.temperaturaMAX - 273.15 | number:'1.0-1' }} °C</h2>
+
+<a routerLink="/">Torna indietro</a>

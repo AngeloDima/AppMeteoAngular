@@ -5,7 +5,7 @@ import { PrevisioniComponent } from './home/previsioni/previsioni.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "previsioni", component: PrevisioniComponent }
+  { path: "previsioni/:nome", component: PrevisioniComponent }
 ];
 
 @NgModule({
@@ -13,3 +13,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

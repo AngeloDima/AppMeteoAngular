@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MetAttuale } from '../models/met-attuale';
+import { MeteoATT, MeteoPRE } from '../models/met-attuale';
 import { MeteoService } from './meteo.service';
 
 @Component({
@@ -8,20 +8,19 @@ import { MeteoService } from './meteo.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  meteo?: MeteoATT;
 
-  //passo i dati dal service a questo component
+
   constructor(private metSev: MeteoService) { }
 
   ngOnInit(): void {
-    this.metSev.getMeteo().subscribe(
-      (meteoInfo) => {
-        console.log(meteoInfo);
-        this.meteo = meteoInfo
-      }
-    )
+    this.metSev.getMeteo().subscribe((meteoInfo: MeteoATT) => {
+      console.log(meteoInfo);
+      this.meteo = meteoInfo;
+    });
   }
 
-
-  meteo: MetAttuale
-
+  getIconPath(icon: string): string {
+    return `https://openweathermap.org/img/wn/${icon}.png`;
+  }
 }

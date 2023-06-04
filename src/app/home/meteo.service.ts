@@ -1,28 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MetAttuale } from '../models/met-attuale';
+import { MeteoATT, MeteoPRE } from '../models/met-attuale';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeteoService {
-  city: string = "Catania";
-  apiKey: string = "d31c75ca2c4c489eb1e41cc6fe56a1ca";
+  apiKey: string = 'd31c75ca2c4c489eb1e41cc6fe56a1ca';
   url: string;
+  urlPre: string;
 
-  constructor(private http: HttpClient) {
-    this.url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}`;
-  }
+  constructor(private http: HttpClient) { }
 
 
-  //prendo i dati dalla API e le mappo con le PIPE
+
   getMeteo() {
+    const city = 'Alaska';
+    this.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+
     return this.http.get(this.url).pipe(
       map((response: any) => {
-        const meteoInfo: MetAttuale = new MetAttuale(this.city);
+        const meteoInfo: MeteoATT = new MeteoATT(city);
 
-        //riassegno un nuovo nome per comodità  (il primo è il nome:   la seconda è il dato grezzo)
         meteoInfo.tempoInfo = {
           id: response.weather[0].id,
           cielo: response.weather[0].main,
@@ -42,6 +42,24 @@ export class MeteoService {
         };
 
         return meteoInfo;
+      })
+    );
+  }
+
+  getPrevisioni(city: string) {
+    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;
+
+    return this.http.get(this.urlPre).pipe(
+      map((response: any) => {
+        const meteoPrevisioni: MeteoPRE = new MeteoPRE(city);
+
+        meteoPrevisioni.priPrev = {
+          temperaturaPRE: response.list[0].main.temp,
+          temperaturaMIN: response.list[0].main.temp_min,
+          temperaturaMAX: response.list[0].main.temp_max,
+          umiditaPRE: response.list[0].main.humidity,
+        };
+        return meteoPrevisioni;
       })
     );
   }
