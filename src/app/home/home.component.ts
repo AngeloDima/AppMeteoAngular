@@ -27,4 +27,10 @@ export class HomeComponent implements OnInit {
   getIconPath(icon: string): string {
     return `https://openweathermap.org/img/wn/${icon}.png`;
   }
+
+  piove: string = "Rain"
+  drizle: string = "Drizzle"
+  nuvoloso: string = "Clouds"
+  sole: string = "Sun"
+  pulito: string = "Clear"
 }

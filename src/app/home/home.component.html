@@ -1,24 +1,52 @@
 <div class="container-main">
 
-  <div class="content-main"></div>
+  <div class="content-main">
+
+
+    <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
+      {{ meteo?.nomeCitta }}
+    </a>
+
+    <div class="infoPrin">
+      <h2>{{ meteo?.principale.temperatura }}</h2>
+      <h2>{{ meteo?.tempoInfo.descrizione }}</h2>
+    </div>
+
+
+
+    <div class="sfoim">
+      <img *ngIf="meteo?.tempoInfo.cielo == drizle"
+        src="https://i.pinimg.com/originals/71/28/91/71289104cb8b4d0c62c4464bc6fe2769.gif" alt="">
+      <img *ngIf="meteo?.tempoInfo.cielo == piove"
+        src="https://i.pinimg.com/originals/71/28/91/71289104cb8b4d0c62c4464bc6fe2769.gif" alt="">
+      <img *ngIf="meteo?.tempoInfo.cielo == sole" src="https://i.makeagif.com/media/11-26-2017/HDXVq-.gif" alt="">
+      <img *ngIf="meteo?.tempoInfo.cielo == nuvoloso" src="https://i.gifer.com/2yao.gif" alt="">
+      <img *ngIf="meteo?.tempoInfo.cielo == pulito"
+        src="https://gifdb.com/images/file/animated-sunny-day-sun-shining-blue-sky-pmmi9f63tshlbmxu.gif" alt="">
+    </div>
+
+    <div class="inputMeteo">
+      <input type="text" [(ngModel)]="city" placeholder="Nome città">
+      <button type="submit" (click)="getMeteo()">Aggiorna</button>
+    </div>
+
+
+
+  </div>
+
+
   <div class="content-dx"></div>
-  <div class="content-down"></div>
+  <div class="content-down">
 
-
-  <!-- <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
-    <h1 id>{{ meteo?.nomeCitta }}</h1>
-  </a>
-
-
-  <h2>Temperatura attuale {{ meteo?.principale.temperatura | number:'1.0-1'}} °C</h2>
-  <h2> {{ meteo?.tempoInfo.descrizione }} <img [src]="getIconPath(meteo?.tempoInfo.icon)" alt="Icona meteo"></h2>
-  <h2>{{ meteo?.vento.velocitaVento }} Km/h</h2>
+  </div>
 
 
 
 
 
-  <input type="text" [(ngModel)]="city" placeholder="Nome città">
-  <button type="submit" (click)="getMeteo()">Aggiorna</button> -->
+
+
+
+
 
 </div>
