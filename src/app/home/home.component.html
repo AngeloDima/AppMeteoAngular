@@ -1,23 +1,24 @@
-<div class="container-Box">
-  <div class="card-texture">
-    <div class="box">
-      <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
-        <h1 id>{{ meteo?.nomeCitta }}</h1>
-      </a>
+<div class="container-main">
 
-      <h2>Temperatura attuale {{ meteo?.principale.temperatura | number:'1.0-1'}} °C</h2>
-      <h2> {{ meteo?.tempoInfo.descrizione }}</h2>
-      <img [src]="getIconPath(meteo?.tempoInfo.icon)" alt="Icona meteo">
-      <h2>{{ meteo?.vento.velocitaVento }} Km/h</h2>
+  <div class="content-main"></div>
+  <div class="content-dx"></div>
+  <div class="content-down"></div>
 
-      <input type="text" [(ngModel)]="city" placeholder="Nome città">
-      <button type="submit" (click)="getMeteo()">Aggiorna</button>
 
-    </div>
+  <!-- <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
+    <h1 id>{{ meteo?.nomeCitta }}</h1>
+  </a>
 
+
+  <h2>Temperatura attuale {{ meteo?.principale.temperatura | number:'1.0-1'}} °C</h2>
+  <h2> {{ meteo?.tempoInfo.descrizione }} <img [src]="getIconPath(meteo?.tempoInfo.icon)" alt="Icona meteo"></h2>
+  <h2>{{ meteo?.vento.velocitaVento }} Km/h</h2>
 
 
 
 
-  </div>
+
+  <input type="text" [(ngModel)]="city" placeholder="Nome città">
+  <button type="submit" (click)="getMeteo()">Aggiorna</button> -->
+
 </div>
