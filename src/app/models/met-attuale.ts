@@ -17,16 +17,26 @@ export class MeteoATT {
   }
 }
 
+// ----------------------------PREVISIONI-------------------------------------
 export class MeteoPRE {
   dt?: number;
   nomeCitta?: string;
   priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number };
+  infoVento?: { vento: number }
+  tempoInfo?: { descrizione: string }
+
 
   constructor(
     nomeCitta?: string,
-    priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number }
+    priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number },
+    infoVento?: { vento: number },
+    tempoInfo?: { descrizione: string }
   ) {
     this.nomeCitta = nomeCitta;
     this.priPrev = priPrev;
+    this.infoVento = infoVento;
+    this.tempoInfo = tempoInfo
   }
 }
+
+

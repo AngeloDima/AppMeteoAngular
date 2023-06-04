@@ -16,7 +16,6 @@ export class MeteoService {
 
 
   getMeteo(city: string) {
-
     this.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
 
     return this.http.get(this.url).pipe(
@@ -46,6 +45,8 @@ export class MeteoService {
     );
   }
 
+
+
   getPrevisioni(city: string) {
     this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;
 
@@ -59,8 +60,20 @@ export class MeteoService {
           temperaturaMAX: response.list[0].main.temp_max,
           umiditaPRE: response.list[0].main.humidity,
         };
+
+        meteoPrevisioni.infoVento = {
+          vento: response.list[0].wind.speed
+        };
+
+        meteoPrevisioni.tempoInfo = {
+          descrizione: response.list[0].weather[0].description
+        }
+
+
         return meteoPrevisioni;
       })
     );
   }
 }
+
+
