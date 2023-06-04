@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MeteoATT, MeteoPRE } from '../models/met-attuale';
+import { MeteoATT } from '../models/met-attuale';
 import { MeteoService } from './meteo.service';
 
 @Component({
@@ -9,12 +9,16 @@ import { MeteoService } from './meteo.service';
 })
 export class HomeComponent implements OnInit {
   meteo?: MeteoATT;
-
+  city: string = '';
 
   constructor(private metSev: MeteoService) { }
 
   ngOnInit(): void {
-    this.metSev.getMeteo().subscribe((meteoInfo: MeteoATT) => {
+    this.getMeteo();
+  }
+
+  getMeteo(): void {
+    this.metSev.getMeteo(this.city).subscribe((meteoInfo: MeteoATT) => {
       console.log(meteoInfo);
       this.meteo = meteoInfo;
     });

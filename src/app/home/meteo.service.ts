@@ -13,10 +13,10 @@ export class MeteoService {
 
   constructor(private http: HttpClient) { }
 
+  city = '';
 
+  getMeteo(city: string) {
 
-  getMeteo() {
-    const city = 'Alaska';
     this.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
 
     return this.http.get(this.url).pipe(
