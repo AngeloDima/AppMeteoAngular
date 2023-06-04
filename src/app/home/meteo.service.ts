@@ -13,7 +13,7 @@ export class MeteoService {
 
   constructor(private http: HttpClient) { }
 
-  city = '';
+
 
   getMeteo(city: string) {
 

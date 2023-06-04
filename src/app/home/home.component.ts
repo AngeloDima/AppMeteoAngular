@@ -9,7 +9,7 @@ import { MeteoService } from './meteo.service';
 })
 export class HomeComponent implements OnInit {
   meteo?: MeteoATT;
-  city: string = '';
+  city: string = 'Augusta';
 
   constructor(private metSev: MeteoService) { }
 
