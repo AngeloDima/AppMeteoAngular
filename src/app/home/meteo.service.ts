@@ -16,7 +16,8 @@ export class MeteoService {
 
 
   getMeteo(city: string) {
-    this.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+
+    this.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=it&units=metric&appid=${this.apiKey}`;
 
     return this.http.get(this.url).pipe(
       map((response: any) => {
@@ -48,7 +49,8 @@ export class MeteoService {
 
 
   getPrevisioni(city: string) {
-    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;
+    https://api.openweathermap.org/data/2.5/forecast?q=Catania&cnt=4&appid=d31c75ca2c4c489eb1e41cc6fe56a1ca
+    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=3&appid=${this.apiKey}`;
 
     return this.http.get(this.urlPre).pipe(
       map((response: any) => {
@@ -68,8 +70,6 @@ export class MeteoService {
         meteoPrevisioni.tempoInfo = {
           descrizione: response.list[0].weather[0].description
         }
-
-
         return meteoPrevisioni;
       })
     );

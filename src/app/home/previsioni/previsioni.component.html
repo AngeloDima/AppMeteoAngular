@@ -1,6 +1,6 @@
 <h1>Previsioni meteo per {{ nomeCitta }}</h1>
 
-<h2>Temperatura attuale: {{ meteoPrev?.priPrev.temperaturaPRE - 273.15 | number:'1.0-1' }} °C</h2>
+<h2>Temperatura attuale: {{ meteoPrev?.priPrev.temperaturaPRE | number:'1.0-1' }} °C</h2>
 <h2>Vento: {{ meteoPrev?.infoVento.vento }}Km/h </h2>
 <h2>Descrizione {{ meteoPrev?.tempoInfo.descrizione }} </h2>
 <a routerLink="/">Torna indietro</a>

@@ -1,13 +1,23 @@
-<h1>Benvenuto in meteo Dima</h1>
+<div class="container-Box">
+  <div class="card-texture">
+    <div class="box">
+      <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
+        <h1 id>{{ meteo?.nomeCitta }}</h1>
+      </a>
 
-<h1>{{ meteo?.nomeCitta }}</h1>
+      <h2>Temperatura attuale {{ meteo?.principale.temperatura | number:'1.0-1'}} °C</h2>
+      <h2> {{ meteo?.tempoInfo.descrizione }}</h2>
+      <img [src]="getIconPath(meteo?.tempoInfo.icon)" alt="Icona meteo">
+      <h2>{{ meteo?.vento.velocitaVento }} Km/h</h2>
 
-<h2>attuale: {{ meteo?.principale.temperatura - 273.15 | number:'1.0-1'}} °C</h2>
-<h2>{{ meteo?.tempoInfo.descrizione }}</h2>
-<img [src]="getIconPath(meteo?.tempoInfo.icon)" alt="Icona meteo">
-<h2>{{ meteo?.vento.velocitaVento }} Km/h</h2>
+      <input type="text" [(ngModel)]="city" placeholder="Nome città">
+      <button type="submit" (click)="getMeteo()">Aggiorna</button>
 
-<input type="text" [(ngModel)]="city" placeholder="Nome città">
-<button type="submit" (click)="getMeteo()">Aggiorna</button>
+    </div>
 
-<a [routerLink]="['/previsioni', meteo?.nomeCitta]">Vedi previsioni</a>
+
+
+
+
+  </div>
+</div>

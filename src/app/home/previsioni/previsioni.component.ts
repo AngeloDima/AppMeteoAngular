@@ -14,6 +14,7 @@ export class PrevisioniComponent implements OnInit {
   meteoPrev?: MeteoPRE
   constructor(private route: ActivatedRoute, private metSev: MeteoService) { }
 
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.nomeCitta = params['nome'];
