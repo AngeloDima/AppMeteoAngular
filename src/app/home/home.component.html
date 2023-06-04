@@ -3,12 +3,12 @@
   <div class="content-main">
 
 
-    <a [routerLink]="['/previsioni', meteo?.nomeCitta]">
+    <h3 [routerLink]="['/previsioni', meteo?.nomeCitta]">
       {{ meteo?.nomeCitta }}
-    </a>
+    </h3>
 
     <div class="infoPrin">
-      <h2>{{ meteo?.principale.temperatura }}</h2>
+      <h2>{{ meteo?.principale.temperatura }} °C</h2>
       <h2>{{ meteo?.tempoInfo.descrizione }}</h2>
     </div>
 
@@ -35,9 +35,15 @@
   </div>
 
 
-  <div class="content-dx"></div>
-  <div class="content-down">
+  <div class="content-dx">
+    <h4> TEMPERATURA MASSIMA {{ meteo?.principale.tempMax }} °C </h4>
+    <h4> TEMPERATURA MINIMA {{ meteo?.principale.tempMin}} °C </h4>
+    <h4> UMIDITA {{ meteo?.principale.umidita}} % </h4>
+    <h4> VELOCITA VENTO {{ meteo?.vento.velocitaVento}} Km/h </h4>
+  </div>
 
+  <div class="content-down">
+    <a routerLink="previsioni/{{meteo?.nomeCitta}}">PREVISIONI 3H</a>
   </div>
 
 
