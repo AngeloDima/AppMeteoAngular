@@ -11,7 +11,8 @@ import { MeteoService } from '../meteo.service';
 export class PrevisioniComponent implements OnInit {
   nomeCitta: string;
 
-  meteoPrev?: MeteoPRE
+  meteoPrev?: MeteoPRE[];
+
   constructor(private route: ActivatedRoute, private metSev: MeteoService) { }
 
 
@@ -19,11 +20,15 @@ export class PrevisioniComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.nomeCitta = params['nome'];
 
-      this.metSev.getPrevisioni(this.nomeCitta).subscribe((meteoPrev: MeteoPRE) => {
+      this.metSev.getPrevisioni(this.nomeCitta).subscribe((meteoPrev: MeteoPRE[]) => {
         console.log(meteoPrev);
-        this.meteoPrev = meteoPrev
+        this.meteoPrev = meteoPrev;
         // Aggiorna il template con le informazioni sulle previsioni meteo
       });
+
     });
   }
 }
+
+
+

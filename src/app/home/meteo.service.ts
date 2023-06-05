@@ -49,31 +49,37 @@ export class MeteoService {
 
 
   getPrevisioni(city: string) {
-    https://api.openweathermap.org/data/2.5/forecast?q=Catania&cnt=4&appid=d31c75ca2c4c489eb1e41cc6fe56a1ca
     this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=3&appid=${this.apiKey}`;
 
     return this.http.get(this.urlPre).pipe(
       map((response: any) => {
-        const meteoPrevisioni: MeteoPRE = new MeteoPRE(city);
+        const meteoPrevisioni: MeteoPRE[] = [];
 
-        meteoPrevisioni.priPrev = {
-          temperaturaPRE: response.list[0].main.temp,
-          temperaturaMIN: response.list[0].main.temp_min,
-          temperaturaMAX: response.list[0].main.temp_max,
-          umiditaPRE: response.list[0].main.humidity,
-        };
+        response.list.forEach((item: any) => {
+          const previsione: MeteoPRE = new MeteoPRE(city);
 
-        meteoPrevisioni.infoVento = {
-          vento: response.list[0].wind.speed
-        };
+          previsione.priPrev = {
+            temperaturaPRE: item.main.temp,
+            temperaturaMIN: item.main.temp_min,
+            temperaturaMAX: item.main.temp_max,
+            umiditaPRE: item.main.humidity,
+          };
 
-        meteoPrevisioni.tempoInfo = {
-          descrizione: response.list[0].weather[0].description
-        }
+          previsione.infoVento = {
+            vento: item.wind.speed
+          };
+
+          previsione.tempoInfo = {
+            descrizione: item.weather[0].description
+          };
+
+          meteoPrevisioni.push(previsione);
+        });
+
         return meteoPrevisioni;
       })
     );
   }
-}
 
+}
 

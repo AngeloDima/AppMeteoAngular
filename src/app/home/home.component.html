@@ -3,25 +3,25 @@
   <div class="content-main">
 
 
-    <h3 [routerLink]="['/previsioni', meteo?.nomeCitta]">
+    <h3 [routerLink]="['/previsioni', meteo.nomeCitta]">
       {{ meteo?.nomeCitta }}
     </h3>
 
     <div class="infoPrin">
-      <h2>{{ meteo?.principale.temperatura }} °C</h2>
-      <h2>{{ meteo?.tempoInfo.descrizione }}</h2>
+      <h2>{{ meteo.principale.temperatura }} °C</h2>
+      <h2>{{ meteo.tempoInfo.descrizione }}</h2>
     </div>
 
 
 
     <div class="sfoim">
-      <img *ngIf="meteo?.tempoInfo.cielo == drizle"
+      <img *ngIf="meteo.tempoInfo.cielo == drizle"
         src="https://i.pinimg.com/originals/71/28/91/71289104cb8b4d0c62c4464bc6fe2769.gif" alt="">
-      <img *ngIf="meteo?.tempoInfo.cielo == piove"
+      <img *ngIf="meteo.tempoInfo.cielo == piove"
         src="https://i.pinimg.com/originals/71/28/91/71289104cb8b4d0c62c4464bc6fe2769.gif" alt="">
-      <img *ngIf="meteo?.tempoInfo.cielo == sole" src="https://i.makeagif.com/media/11-26-2017/HDXVq-.gif" alt="">
-      <img *ngIf="meteo?.tempoInfo.cielo == nuvoloso" src="https://i.gifer.com/2yao.gif" alt="">
-      <img *ngIf="meteo?.tempoInfo.cielo == pulito"
+      <img *ngIf="meteo.tempoInfo.cielo == sole" src="https://i.makeagif.com/media/11-26-2017/HDXVq-.gif" alt="">
+      <img *ngIf="meteo.tempoInfo.cielo == nuvoloso" src="https://i.gifer.com/2yao.gif" alt="">
+      <img *ngIf="meteo.tempoInfo.cielo == pulito"
         src="https://gifdb.com/images/file/animated-sunny-day-sun-shining-blue-sky-pmmi9f63tshlbmxu.gif" alt="">
     </div>
 
@@ -36,23 +36,15 @@
 
 
   <div class="content-dx">
-    <h4> TEMPERATURA MASSIMA {{ meteo?.principale.tempMax }} °C </h4>
-    <h4> TEMPERATURA MINIMA {{ meteo?.principale.tempMin}} °C </h4>
-    <h4> UMIDITA {{ meteo?.principale.umidita}} % </h4>
-    <h4> VELOCITA VENTO {{ meteo?.vento.velocitaVento}} Km/h </h4>
+    <h4> TEMPERATURA MASSIMA {{ meteo.principale.tempMax }} °C </h4>
+    <h4> TEMPERATURA MINIMA {{ meteo.principale.tempMin}} °C </h4>
+    <h4> UMIDITA {{ meteo.principale.umidita}} % </h4>
+    <h4> VELOCITA VENTO {{ meteo.vento.velocitaVento}} Km/h </h4>
   </div>
 
   <div class="content-down">
-    <a routerLink="previsioni/{{meteo?.nomeCitta}}">PREVISIONI 3H</a>
+    <a routerLink="previsioni/{{meteo.nomeCitta}}">PREVISIONI 3H</a>
   </div>
-
-
-
-
-
-
-
-
 
 
 </div>

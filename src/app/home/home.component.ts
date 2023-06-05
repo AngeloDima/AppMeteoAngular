@@ -34,3 +34,6 @@ export class HomeComponent implements OnInit {
   sole: string = "Sun"
   pulito: string = "Clear"
 }
+
+
+
