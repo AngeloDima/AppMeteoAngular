@@ -49,7 +49,7 @@ export class MeteoService {
 
 
   getPrevisioni(city: string) {
-    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=3&appid=${this.apiKey}`;
+    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=8&appid=${this.apiKey}`;
 
     return this.http.get(this.urlPre).pipe(
       map((response: any) => {

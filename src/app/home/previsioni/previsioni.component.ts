@@ -23,7 +23,6 @@ export class PrevisioniComponent implements OnInit {
       this.metSev.getPrevisioni(this.nomeCitta).subscribe((meteoPrev: MeteoPRE[]) => {
         console.log(meteoPrev);
         this.meteoPrev = meteoPrev;
-        // Aggiorna il template con le informazioni sulle previsioni meteo
       });
 
     });
