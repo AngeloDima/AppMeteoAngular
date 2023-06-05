@@ -21,14 +21,14 @@ export class MeteoATT {
 export class MeteoPRE {
   dt?: number;
   nomeCitta?: string;
-  priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number };
+  priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number, orario: string };
   infoVento?: { vento: number }
   tempoInfo?: { descrizione: string }
 
 
   constructor(
     nomeCitta?: string,
-    priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number },
+    priPrev?: { temperaturaPRE: number; temperaturaMIN: number; temperaturaMAX: number; umiditaPRE: number, orario: string },
     infoVento?: { vento: number },
     tempoInfo?: { descrizione: string }
   ) {
@@ -36,6 +36,7 @@ export class MeteoPRE {
     this.priPrev = priPrev;
     this.infoVento = infoVento;
     this.tempoInfo = tempoInfo
+
   }
 }
 

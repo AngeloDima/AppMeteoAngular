@@ -1,9 +1,13 @@
-<h1>Previsioni meteo per {{ nomeCitta }}</h1>
+<h1 class="NomeCittà">Previsioni meteo per: {{ nomeCitta }}</h1>
 
-<div *ngFor="let previsione of meteoPrev">
-  <h2>Temperatura attuale: {{ previsione.priPrev.temperaturaPRE | number:'1.0-1' }} °C</h2>
-  <h2>Vento: {{ previsione.infoVento.vento }} Km/h</h2>
-  <h2>Descrizione: {{ previsione.tempoInfo.descrizione }}</h2>
+<div class="container">
+  <div *ngFor="let previsione of meteoPrev" class="box">
+    <h2> {{previsione.priPrev.orario }} </h2>
+    <h2>Temperatura attuale: {{ previsione.priPrev.temperaturaPRE | number:'1.0-1' }} °C</h2>
+    <h2>Vento: {{ previsione.infoVento.vento }} Km/h</h2>
+    <h2>Descrizione: {{ previsione.tempoInfo.descrizione }}</h2>
+  </div>
 </div>
+
 
 <a routerLink="/">Torna indietro</a>

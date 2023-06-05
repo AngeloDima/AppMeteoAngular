@@ -1,0 +1,20 @@
+.NomeCittà{
+  padding: 20px 50px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 15px 0px #0000003d;
+}
+
+.container{
+  width: 100%;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  .box{
+    width: 350px;
+    height: 200px;
+    border: 3px solid black;
+  }
+}

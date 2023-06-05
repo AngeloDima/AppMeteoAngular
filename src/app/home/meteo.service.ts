@@ -63,6 +63,7 @@ export class MeteoService {
             temperaturaMIN: item.main.temp_min,
             temperaturaMAX: item.main.temp_max,
             umiditaPRE: item.main.humidity,
+            orario: item.dt_txt
           };
 
           previsione.infoVento = {
