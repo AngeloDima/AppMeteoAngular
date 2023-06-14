@@ -49,15 +49,14 @@ export class MeteoService {
 
 
   getPrevisioni(city: string) {
-    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=8&appid=${this.apiKey}`;
-
+    this.urlPre = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=it&units=metric&cnt=9&appid=${this.apiKey}`;
     return this.http.get(this.urlPre).pipe(
       map((response: any) => {
         const meteoPrevisioni: MeteoPRE[] = [];
 
+
         response.list.forEach((item: any) => {
           const previsione: MeteoPRE = new MeteoPRE(city);
-
           previsione.priPrev = {
             temperaturaPRE: item.main.temp,
             temperaturaMIN: item.main.temp_min,
@@ -65,17 +64,15 @@ export class MeteoService {
             umiditaPRE: item.main.humidity,
             orario: item.dt_txt
           };
-
           previsione.infoVento = {
             vento: item.wind.speed
           };
-
           previsione.tempoInfo = {
-            descrizione: item.weather[0].description
+            descrizione: item.weather[0].description,
           };
-
           meteoPrevisioni.push(previsione);
         });
+
 
         return meteoPrevisioni;
       })
